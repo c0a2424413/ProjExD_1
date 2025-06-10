@@ -13,14 +13,14 @@ def main():
     bg_img2 = pg.transform.flip(bg_img,True, False) #背景画像の反転
     kk_img = pg.image.load("fig/3.png") #こうかとん画像のサーフェイス
     kk_img = pg.transform.flip(kk_img, True, False) #こうかとん反転
-
     tmr = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
-        screen.blit(bg_img, [-tmr, 0]) #背景動く
-        screen.blit(bg_img2,[-tmr+1600,0]) #背景連続
+        tmr1 = tmr%3200
+        screen.blit(bg_img, [-tmr1, 0]) #1枚目
+        screen.blit(bg_img2,[-tmr1+1600,0]) #2枚目
+        screen.blit(bg_img,[-tmr1+3200,0])
         screen.blit(kk_img, [300, 200])#こうかとん表示
         pg.display.update()
         tmr += 1        
