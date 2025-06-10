@@ -10,6 +10,7 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg") #背景画像のサーフェイス
+    bg_img2 = pg.transform.flip(bg_img,True, False) #背景画像の反転
     kk_img = pg.image.load("fig/3.png") #こうかとん画像のサーフェイス
     kk_img = pg.transform.flip(kk_img, True, False) #こうかとん反転
 
@@ -18,8 +19,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-tmr, 0])
-        screen.blit(bg_img,[-tmr+1600,0])
+        screen.blit(bg_img, [-tmr, 0]) #背景動く
+        screen.blit(bg_img2,[-tmr+1600,0]) #背景連続
         screen.blit(kk_img, [300, 200])#こうかとん表示
         pg.display.update()
         tmr += 1        
